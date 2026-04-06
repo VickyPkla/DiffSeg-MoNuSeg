@@ -1,12 +1,33 @@
-# DiffSeg-MoNuSeg
-
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-A diffusion-based segmentation model for medical image analysis, specifically designed for nuclei segmentation in histopathology images using the MoNuSeg dataset.
-
 ## What is DiffSeg-MoNuSeg?
 
-DiffSeg-MoNuSeg is an implementation of a conditional denoising diffusion probabilistic model (DDPM) for semantic segmentation tasks. The model combines a feature extraction network for input images with a diffusion-based denoising process conditioned on segmentation features to generate high-quality segmentation masks.
+DiffSeg-MoNuSeg is an implementation of SegDiff research paper which uses the conditional Denoising Diffusion Probabilistic Model (DDPM) for semantic segmentation tasks. The model combines a feature extraction network for input images with a diffusion-based denoising process conditioned on segmentation features to generate high-quality segmentation masks.
+
+<table>
+  <tr>
+    <th>Input</th>
+    <th>Ground Truth Mask</th>
+    <th>Predicted Mask</th>
+  </tr>
+
+  <tr>
+    <td><img src="Results/1_image.png" width="250"/></td>
+    <td><img src="Results/1.png" width="250"/></td>
+    <td><img src="Results/1_pred.png" width="250"/></td>
+  </tr>
+
+  <tr>
+    <td><img src="Results/2_image.png" width="250"/></td>
+    <td><img src="Results/2.png" width="250"/></td>
+    <td><img src="Results/2_pred.png" width="250"/></td>
+  </tr>
+
+  <tr>
+    <td><img src="Results/3_image.png" width="250"/></td>
+    <td><img src="Results/3.png" width="250"/></td>
+    <td><img src="Results/3_pred.png" width="250"/></td>
+  </tr>
+</table>
+
 
 The architecture consists of:
 - **Input Encoder**: RRDBNetSimple (Residual-in-Residual Dense Block Network) for extracting features from input images
@@ -123,43 +144,4 @@ Key hyperparameters can be modified in the respective scripts:
 - `PATCH_SIZE`: Training patch size (default: 64)
 - `STRIDE`: Patch overlap stride (default: 32)
 - `THRESHOLD`: Binarization threshold for inference (default: 0.7)
-
-## Results
-
-*Results will be added after training completion. The model achieves state-of-the-art performance on the MoNuSeg nuclei segmentation benchmark.*
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on:
-
-- Reporting bugs
-- Feature requests
-- Code contributions
-- Documentation improvements
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```
-@misc{diffseg-monuseg,
-  title={DiffSeg-MoNuSeg: Diffusion-based Segmentation for MoNuSeg Dataset},
-  author={Your Name},
-  year={2024},
-  url={https://github.com/your-repo/diffseg-monuseg}
-}
-```
-
-## Support
-
-For questions, issues, or contributions:
-- Open an issue on GitHub
-- Contact the maintainers
-
----
-
-*Built with PyTorch for medical image segmentation research.*
+- `N_RUNS`: Number of times to run the inference to reduce the sampling variance (default: 1)
