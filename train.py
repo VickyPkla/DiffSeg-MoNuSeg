@@ -42,16 +42,6 @@ mask_transform = transforms.Compose([
 # -------------------------------
 # Dataset
 # -------------------------------
-import os
-import torch
-from torch.utils.data import Dataset
-from PIL import Image
-from torchvision import transforms
-import os
-from torch.utils.data import Dataset
-from PIL import Image
-from torchvision import transforms
-
 class PatchDataset(Dataset):
 
     def __init__(self, root_dir, patch_size=128, stride=64,
